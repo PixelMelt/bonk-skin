@@ -1,12 +1,10 @@
 import { createCanvas, loadImage, type Image as CanvasImage } from '@napi-rs/canvas';
 import type { SkinData } from '../types/types';
-import svgData from './svgs.json';
+import { svgStrings } from './svgs';
 
 const DEFAULT_SIZE = 100;
 const TWO_PI = Math.PI * 2;
 const DEG_TO_RAD = Math.PI / 180;
-
-const svgStrings = svgData as Record<string, string>;
 
 const imageCache = new Map<number, CanvasImage>();
 
