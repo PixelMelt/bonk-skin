@@ -8,6 +8,8 @@ Encode, decode, validate, and render [bonk.io](https://bonk.io) skins.
 npm install bonk-skin
 ```
 
+Browser bundlers automatically get a build that excludes the Node.js-only `renderToBuffer` function, so `@napi-rs/canvas` is never pulled into your browser bundle.
+
 ## Encoding & Decoding
 
 Convert between the bonk.io skin string format and a typed `SkinData` object.
@@ -72,7 +74,7 @@ validateLayers(skin.layers);
 
 ### Node / Bun
 
-`renderToBuffer` uses `@napi-rs/canvas` to produce a PNG buffer without a browser.
+`renderToBuffer` uses `@napi-rs/canvas` to produce a PNG buffer without a browser. It is only available in Node.js/Bun.
 
 ```ts
 import { decodeSkin, renderToBuffer } from 'bonk-skin';
@@ -84,6 +86,12 @@ writeFileSync('skin.png', png);
 
 // Custom size
 const large = renderToBuffer(skin, { size: 200 });
+```
+
+You can also import it explicitly from the `bonk-skin/node` sub-path:
+
+```ts
+import { renderToBuffer } from 'bonk-skin/node';
 ```
 
 ### Browser using PIXI.js
