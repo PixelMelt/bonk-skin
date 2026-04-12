@@ -1,6 +1,6 @@
 {
 	"name": "bonk-skin",
-	"version": "0.1.1",
+	"version": "0.1.2",
 	"description": "Encode, decode, validate, and render bonk.io skins",
 	"author": "Pixelmelt",
 	"type": "module",
